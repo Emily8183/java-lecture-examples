@@ -14,7 +14,7 @@ public class ArrayExamples {
         // TODO: Add 4 Hobbits at different indices
         hobbits[0] = "swimming";
         hobbits[2] = "reading";
-        hobbits[3] = "horse riding";
+        hobbits[3] = "riding";
         hobbits[7] = "singing";
 
         // TODO: Print an element at an index with an unassigned value
