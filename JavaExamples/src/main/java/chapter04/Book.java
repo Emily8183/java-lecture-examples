@@ -8,14 +8,14 @@ public class Book {
     // available should be initialized to true
     private String title;
     private String author;
-    private String numPages;
-    private Boolean isAvailable = true;
+    private Integer numPages;
+    private Boolean available = true;
 
     // CONSTRUCTORS
 
     // TODO: Define a constructor that takes title, author, and numPages
     // constructor1
-    public Book(String title, String author, String numPages) {
+    public Book(String title, String author, Integer numPages) {
         this.title = title;
         this.author = author;
         this.numPages = numPages;
@@ -48,17 +48,17 @@ public class Book {
         this.author = author;
     }
 
-    public String getNumPages() {
+    public Integer getNumPages() {
         return numPages;
     }
 
-    public void setNumPages(String numPages) {
+    public void setNumPages(Integer numPages) {
         this.numPages = numPages;
     }
 
     // Create only a getter for available (we will have instance methods to set this)
     public Boolean isAvailable() {
-        return true;
+        return available;
     }
 
     // INSTANCE METHODS
@@ -66,13 +66,21 @@ public class Book {
     // TODO: Define a method, getTitleAndAuthor(), to return a string like "Book Title by Author Name"
     // It should have default access
     String getTitleAndAuthor() { //实例方法，所以这里不需要再写parameter，直接call class的fields
-        return "Book" + title + "by Author" + author;
+        return title + " by " + author;
     }
 
     // TODO: Define a method, checkOut(), with public access
     // It should change the availability and also print a statement with the title and author name
+    public void checkOut() {
+        available = false;
+        System.out.println("This book " + title + " by " + author + "has been checked out");
+    }
 
     // TODO: Define a method, checkIn(), with public access
     // It should change the availability and also print a statement with the title and author name
+    public void checkIn() {
+        available = true;
+        System.out.println("This book " + title + " by " + author + "has been checked in");
+    }
 
 }
