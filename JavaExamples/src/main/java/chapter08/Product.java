@@ -5,6 +5,9 @@ public abstract class Product {
 
     private static int nextId = 1;
 
+    private final double originalPrice;
+    private double currentPrice;
+
     private final int id;
     private String name;
     private String desc;
@@ -15,7 +18,8 @@ public abstract class Product {
         this.id = nextId;
         this.name = name;
         this.desc = desc;
-        this.price = price;
+        this.originalPrice = price;
+        this.currentPrice = price;
         this.quantity = quantity;
         nextId++;
     }
@@ -64,13 +68,26 @@ public abstract class Product {
         quantity -= amount;
     }
 
+    public double getOriginalPrice() {
+        return originalPrice;
+    }
+
+    public double getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
     @Override
     public String toString() {
         return "PRODUCT INFORMATION:" + Common.newline +
                 "ID: " + id + Common.newline +
                 "Item: " + name + Common.newline +
                 "Description: " + desc + Common.newline +
-                "Price: " + price + Common.newline +
+                "Original Price: " + originalPrice + Common.newline +
+                "Current Price: " + currentPrice + Common.newline +
                 "Quantity: " + quantity + Common.newline;
     }
 

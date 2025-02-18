@@ -1,9 +1,12 @@
 package chapter08.books;
 
 import chapter08.Common;
+import chapter08.Discountable;
+import chapter08.Utils;
 
 // TODO: Implement Discountable interface
-public class UsedBook extends Book {
+public class UsedBook extends Book implements Discountable {
+    //If UsedBook implements the Discountable interface, it must override all methods defined in Discountable, unless UsedBook itself is declared as abstract.
 
     private final String condition;
 
@@ -28,4 +31,45 @@ public class UsedBook extends Book {
                 getDesc() + Common.newline +
                 getGenre() + Common.pipe + getFormat() + Common.pipe + condition + Common.pipe + getPrice() + Common.newline;
     }
+
+    @Override
+    public void applyPercentDiscount(double percent) {
+        if (percent > 1) {
+            percent /= 100;
+        }
+        if (getCurrentPrice() == getOriginalPrice()) {
+            System.out.println("\nDiscount of " + (percent * 100) +
+                    "% has been applied to product " + getId() +
+                    ", " + getName() + Common.newline);
+        } else {
+            System.out.println("\nAdditional discount of " + (percent * 100)  +
+                    "% has been applied to product " + getId() +
+                    ", " + getName() + Common.newline);
+        }
+        double newPrice = getCurrentPrice() * (1 - percent);
+        setCurrentPrice(Utils.roundToPenny(newPrice));
+    }
+
+    @Override
+    public void applyFlatDiscount(double amount) {
+        if (getCurrentPrice() == getOriginalPrice()) {
+            System.out.println("\nDiscount of $" + amount +
+                    " has been applied to product " + getId() +
+                    ", " + getName() + Common.newline);
+        } else {
+            System.out.println("\nAdditional discount of $" + amount +
+                    " has been applied to product " + getId() +
+                    ", " + getName() + Common.newline);
+        }
+        setCurrentPrice(getCurrentPrice() - amount);
+    }
+
+    @Override
+    public void removeDiscount() {
+        setCurrentPrice(getOriginalPrice());
+        System.out.println("Used book " + getId() + ", " +
+                getName() + ", has been reset to the original price of $" +
+                getOriginalPrice() + Common.newline);
+    }
+
 }
