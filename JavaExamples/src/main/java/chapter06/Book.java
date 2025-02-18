@@ -54,10 +54,6 @@ public class Book {
         this.author = author;
     }
 
-    public boolean isAvailable() {
-        return available;
-    }
-
     public int getNumPages() {
         return numPages;
     }
@@ -90,6 +86,10 @@ public class Book {
 
 
     // INSTANCE METHODS
+
+    public boolean isAvailable() {
+        return available;
+    }
 
     private String generateBookId() {
         String id = Utils.getInitials(author) + "-" + title.substring(0, 3).toUpperCase() + "-" + nextIdNum;

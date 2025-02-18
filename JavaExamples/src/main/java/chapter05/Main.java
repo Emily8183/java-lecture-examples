@@ -1,4 +1,5 @@
 //Chapter5 的思维导图在figma
+//最大的收获是this.bookId可以赋值为一个instance method（generateBookId())的结果
 
 package chapter05;
 

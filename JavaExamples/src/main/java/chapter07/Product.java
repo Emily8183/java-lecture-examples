@@ -1,7 +1,8 @@
 package chapter07;
 
 // TODO: Make class abstract
-public class Product {
+public abstract class Product {
+    //no objects instantiated from it
 
     private static int nextId = 1;
 
@@ -17,7 +18,7 @@ public class Product {
         this.desc = desc;
         this.price = price;
         this.quantity = quantity;
-        nextId++;
+        nextId++; //// Increment nextId for the next product
     }
 
     public static int getNextId() {
@@ -76,4 +77,7 @@ public class Product {
 
     // TODO: Add an abstract method, describe()
 
+    public abstract String describe();//no body, to be overrided(implemented) by concrete classes
+
 }
+

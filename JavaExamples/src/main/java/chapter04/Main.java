@@ -1,4 +1,6 @@
 //Chapter4 的思维导图在whiteboard
+//哪些情况要放parameters: 1) setter methods, 2) library自己不会create book,所以需要传进来
+
 
 package chapter04;
 
