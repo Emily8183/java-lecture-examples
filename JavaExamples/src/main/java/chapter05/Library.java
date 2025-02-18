@@ -1,6 +1,7 @@
 package chapter05;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Library {
 
@@ -8,14 +9,23 @@ public class Library {
 
     // TODO: Ensure books cannot be overwritten by another object
     // Also, make books available to package
-    private ArrayList<Book> books = new ArrayList<>();
+
+    final ArrayList<Book> books = new ArrayList<>();
 
 
     // OVERRIDE SPECIAL METHODS
 
     // TODO: Write a custom toString() method to print a list of all books
     // Use the StringBuilder class and iterate over books
-
+    @Override
+    public String toString() {
+        StringBuilder printAllBooks = new StringBuilder();
+        for (Book book : books) {
+            printAllBooks.append(book.toString());
+        }
+        //  return printAllBooks.toString();
+        return "\n" + printAllBooks; //auto converted to String
+    }
 
     // TODO: Write a custom equals() method to compare the contents of books
     // Use the @Override annotation
@@ -28,7 +38,7 @@ public class Library {
 
     public void addBook(Book book) {
         books.add(book);
-    }
+    } //Since the Library class does not create books itself, it needs the book to be provided as an argument.
 
     public int findBook(String title, String author) {
         for (Book book : books) {
@@ -39,7 +49,7 @@ public class Library {
         return -1;
     }
 
-    public void printAvailableBooks() {
+    public void printAvailableBooks() { //it just looks at the books list that already exists inside the Library object, so no need to add parameters
         System.out.println("\nLIST OF BOOKS AVAILABLE:");
         for (Book book : books) {
             if (book.isAvailable()) {
