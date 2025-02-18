@@ -1,3 +1,7 @@
+//继承interface的话，也要override
+//create a new UsedBook object but the type is Book (in order to be more flexible), 需要casting:
+//System.out.println(((UsedBook) usedBook3).getCondition());
+
 package chapter08;
 
 import chapter08.books.Book;
