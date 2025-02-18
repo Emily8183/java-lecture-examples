@@ -1,68 +1,26 @@
+//Chapter7 是练习abstract
+//construction: super(xxxxx,xxxxx);
+//method: super.toString();
+//super class中的abstract method, no body, must completed by concrete class
+
 package chapter07.books;
 
 import chapter07.Common;
+import chapter07.Product;
 
 // TODO: Refactor class to inherit from Product
-public class Book {
-
-    private static int nextId = 1;
-
-    private final int id;
-    private String name;
-    private String desc;
-    private double price;
-    private int quantity;
-
+public class Book extends Product {
     private String author;
     private String genre;
     private String format;
 
     public Book(String name, String desc, double price, int quantity, String author, String genre, String format) {
-        this.id = nextId;
-        this.name = name;
-        this.desc = desc;
-        this.price = price;
-        this.quantity = quantity;
+
+        super(name,desc,price,quantity);
         this.author = author;
         this.genre = genre;
         this.format = format;
-        nextId++;
-    }
-
-    public static int getNextId() {
-        return nextId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
+//        nextId++;
     }
 
     public String getAuthor() {
@@ -89,26 +47,19 @@ public class Book {
         this.format = format;
     }
 
-    public void increaseQuantity(int amount) {
-        quantity += amount;
-    }
-
-    public void decreaseQuantity(int amount) {
-        quantity -= amount;
-    }
-
     @Override
     public String toString() {
-        return "PRODUCT INFORMATION:" + Common.newline +
-                "ID: " + id + Common.newline +
-                "Item: " + name + Common.newline +
-                "Description: " + desc + Common.newline +
-                "Price: " + price + Common.newline +
-                "Quantity: " + quantity + Common.newline +
+        return  super.toString() +  //super.toString()
                 "Author: " + author + Common.newline +
                 "Genre: " + genre + Common.newline +
                 "Format: " + format + Common.newline;
     }
 
     // TODO: Define describe() as required by Product
+    @Override
+    public String describe(){
+        return getName() + " by " + author + Common.newline +
+                getDesc() + Common.newline +
+                genre + Common.pipe + format + Common.pipe + getPrice() + Common.newline; //TODO: complete Common
+    }
 }

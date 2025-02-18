@@ -76,8 +76,7 @@ public abstract class Product {
     }
 
     // TODO: Add an abstract method, describe()
-
-    public abstract String describe();//no body, to be overrided(implemented) by concrete classes
+    public abstract String describe();//no body, MUST be overrided(implemented) by concrete classes
 
 }
 
